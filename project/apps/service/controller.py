@@ -1,19 +1,15 @@
 from flask import (Flask,render_template,session,request,redirect,flash,url_for, send_from_directory,render_template_string )
-from datetime import datetime , timedelta
+from datetime import datetime , timedelta , timezone
 from ..dbconfig import *
 import os , pytz
 from uuid import uuid4
  
 config = {"max_content" : 104857600 }
 
-from datetime import datetime, timezone, timedelta
 
+# tz = pytz.timezone('Asia/Bangkok')
+# x1 = datetime.now(tz)
 
-tz = pytz.timezone('Asia/Bangkok')
-x1 = datetime.now(tz)
-x2 = datetime.now(tz) + timedelta(minutes=7)
-print(x1 , x2)
-print(x1 < x2)
 
 def upload():
     try :
@@ -28,14 +24,17 @@ def upload():
 @connect_sqlite()
 def service_upload(cursor):
     try:
+        # dateNOW = datetime.now() + timedelta(hours=7) #! [RUN Docker]
+        dateNOW = datetime.now()  #! [RUN local]
+
         login_user = session["user_login"]
         src_file = request.files['file']
         password = request.form['password']
         download = request.form['download']
         expDate = request.form['expDate']
         uuid = request.form['uuid'] 
-        exp_date = datetime.now() + timedelta(hours=7,minutes=int(expDate)) #วันหมดอายุไฟล์ #! +7 ชม. เพราะเมื่อขึ้น docker แล้วเวลา -7 ชม.
-        create_at = datetime.now() + timedelta(hours=7) #วันสร้างไฟล์ #! +7 ชม. เพราะเมื่อขึ้น docker แล้วเวลา -7 ชม.
+        exp_date = dateNOW + timedelta(minutes=int(expDate)) #วันหมดอายุไฟล์ 
+        create_at = datetime.now()  #วันสร้างไฟล์ 
 
         if request.content_length > config["max_content"] :
             return render_template_string('<h1> Upload fail : more than limit file !!!!</h1><br><button onclick="window.history.back()">Go Back</button>')

@@ -7,13 +7,13 @@ import sys ,os
 
 sys.path.append(".")
 
-dateNOW = datetime.now() + timedelta(hours=7) #! +7 ชม. เพราะเมื่อขึ้น docker แล้วเวลา -7 ชม.
+# dateNOW = datetime.now() + timedelta(hours=7)    #! +7 hours [RUN docker]
+dateNOW = datetime.now()                         #! +0 hours [RUN local]
 
 @app.route('/')
 @connect_sqlite()
 def start(cursor):
     try :
-        
         rtn = 'SELECT uuid_name , exp_at from files'
         db_files = cursor.execute(rtn)
         data = cursor.fetchall()
@@ -42,6 +42,7 @@ def start(cursor):
 @connect_sqlite()
 def time_delete_files(cursor):
     try :
+        # print("service time delete Working")
         rtn = 'SELECT uuid_name , exp_at from files'
         db_files = cursor.execute(rtn)
         data = cursor.fetchall()
@@ -64,7 +65,7 @@ def time_delete_files(cursor):
         return "service delete time Error : " + str(e) 
 
 
-interval = 300
+interval = 60
 
 def startTimer():
     threading.Timer(interval, startTimer).start()
