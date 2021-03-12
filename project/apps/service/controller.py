@@ -1,10 +1,20 @@
 from flask import (Flask,render_template,session,request,redirect,flash,url_for, send_from_directory,render_template_string )
 from datetime import datetime , timedelta
 from ..dbconfig import *
-import os
+import os , pytz
 from uuid import uuid4
  
 config = {"max_content" : 104857600 }
+
+from datetime import datetime, timezone, timedelta
+
+
+tz = pytz.timezone('Asia/Bangkok')
+x1 = datetime.now(tz)
+# Create UTC date objects
+x2 = datetime.now(tz) + timedelta(minutes=7)
+print(x1 , x2)
+print(x1 < x2)
 
 def upload():
     try :
