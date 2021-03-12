@@ -3,11 +3,8 @@ from datetime import datetime , timedelta
 from ..dbconfig import *
 import os
 from uuid import uuid4
-
-
+ 
 config = {"max_content" : 104857600 }
-
-
 
 def upload():
     try :
