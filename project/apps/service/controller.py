@@ -11,7 +11,6 @@ from datetime import datetime, timezone, timedelta
 
 tz = pytz.timezone('Asia/Bangkok')
 x1 = datetime.now(tz)
-# Create UTC date objects
 x2 = datetime.now(tz) + timedelta(minutes=7)
 print(x1 , x2)
 print(x1 < x2)
