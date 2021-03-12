@@ -7,8 +7,7 @@ import sys ,os
 
 sys.path.append(".")
 
-# dateNOW = datetime.now() + timedelta(hours=7)    #! +7 hours [RUN docker]
-dateNOW = datetime.now()                         #! +0 hours [RUN local]
+
 
 @app.route('/')
 @connect_sqlite()
@@ -42,7 +41,8 @@ def start(cursor):
 @connect_sqlite()
 def time_delete_files(cursor):
     try :
-        # print("service time delete Working")
+        # dateNOW = datetime.now() + timedelta(hours=7)    #! +7 hours [RUN docker]
+        dateNOW = datetime.now()                         #! +0 hours [RUN local]
         rtn = 'SELECT uuid_name , exp_at from files'
         db_files = cursor.execute(rtn)
         data = cursor.fetchall()
@@ -60,7 +60,7 @@ def time_delete_files(cursor):
                 path_file = "../project/upload/"
                 delete_file = path_file + file_name
                 os.remove(delete_file)
-        # print("service time delete is working")
+        print("service time delete is working at : " , dateNOW )
     except Exception as e :
         return "service delete time Error : " + str(e) 
 
