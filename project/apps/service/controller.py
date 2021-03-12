@@ -24,8 +24,8 @@ def upload():
 @connect_sqlite()
 def service_upload(cursor):
     try:
-        # dateNOW = datetime.now() + timedelta(hours=7) #! [RUN Docker]
-        dateNOW = datetime.now()  #! [RUN local]
+        dateNOW = datetime.now() + timedelta(hours=7) #! [RUN Docker]
+        # dateNOW = datetime.now()  #! [RUN local]
 
         login_user = session["user_login"]
         src_file = request.files['file']

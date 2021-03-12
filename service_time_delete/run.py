@@ -41,8 +41,8 @@ def start(cursor):
 @connect_sqlite()
 def time_delete_files(cursor):
     try :
-        # dateNOW = datetime.now() + timedelta(hours=7)    #! +7 hours [RUN docker]
-        dateNOW = datetime.now()                         #! +0 hours [RUN local]
+        dateNOW = datetime.now() + timedelta(hours=7)    #! +7 hours [RUN docker]
+        # dateNOW = datetime.now()                         #! +0 hours [RUN local]
         rtn = 'SELECT uuid_name , exp_at from files'
         db_files = cursor.execute(rtn)
         data = cursor.fetchall()
