@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+   <body>
+      <meta charset="utf-8">
+      <table border = 1>
+         <thead>
+            <td>create_by</td>
+            <td>name</td>
+            <td>download_times</td>
+            <td>create_at</td>
+            <td>exp_at</td>
+            <td>download</td>
+            <td>delete</td>
+            
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["create_by"]}}</td>
+               <td>{{row["name"]}}</td>
+               <td>{{row['download_times']}}</td>
+               <td>{{row['create_at']}}</td>
+               <td>{{row['exp_at']}}</td>
+               <td><form action="/api/files/service_download/{{row['uuid_name']}} "method="POST" enctype="multipart/form-data">
+                  <input type="submit" value="Download" />
+              </form></td>
+               <td><form action="/api/files/confirm_delete/{{row['uuid_name']}}" method="POST" enctype="multipart/form-data">
+                  <input type="submit" value="Delete" />
+              </form></td>
+            </tr>
+         {% endfor %}
+      </table>
+
+   </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <meta charset="utf-8">
+    <head>
+        <title>Delete</title>
+      </head>
+<h1>Delete</h1>
+<p>Do you want to delete {{uuid_name}} ?</p>
+<form action="/api/files/confirm_delete/{{uuid_name}}" enctype="multipart/form-data" method="POST">
+    <input type="submit" value="Delete" />
+</form>
+
+</body>
+</html>

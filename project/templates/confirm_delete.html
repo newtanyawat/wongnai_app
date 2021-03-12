@@ -1,0 +1,19 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <meta charset="utf-8">
+    <head>
+        <title>Confirm Delete</title>
+      </head>
+      
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 style="text-align: center;">Confirm delete file</h1>
+<p style="text-align: center;">{{uuid_name}}</p>
+<form style="text-align: center;" action="/api/files/service_delete/{{uuid_name}}" enctype="multipart/form-data" method="POST"><br /><input type="submit" value="Yes" /></form>
+<p style="text-align: center;"><button onclick="window.history.back()">No</button></p>
+</body>
+</html>

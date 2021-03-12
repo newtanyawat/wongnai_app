@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Upload File</title>
+</head>
+<body>
+<p>&nbsp;</p>
+<h1 style="text-align: center;">Sign Up</h1>
+<form action="/api/accounts/service_registor" method="POST" enctype="multipart/form-data">
+<p style="text-align: center;"><label>Username :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label><input placeholder="Email or Phone number" id="username" name="username" type="username" /></p>
+<p style="text-align: center;"><label>Password :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label> <input placeholder="********" id="password" name="password" type="password" /></p>
+<p style="text-align: center;"><label>Confirm Password : </label> <input placeholder="********" id="c_password" name="c_password" type="password" /></p>
+<p style="text-align: center;"><input type="submit" value="Sign Up" /></p>
+</form>
+<p style="text-align: center;"><button onclick="window.location.href='/api/accounts/login'"> Already an Account : Login </button></p>
+</body>
+</html>
