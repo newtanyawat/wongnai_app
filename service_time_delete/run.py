@@ -65,7 +65,7 @@ def time_delete_files(cursor):
         return "service delete time Error : " + str(e) 
 
 
-interval = 60
+interval = 60 # 60 sec
 
 def startTimer():
     threading.Timer(interval, startTimer).start()
