@@ -44,8 +44,8 @@ def service_upload(cursor):
             VALUES (?,?,?,?,?,?,?,?)"""
             db_files = cursor.execute(into_files ,(uuid_file , file_name , uuid_name , password ,int(download) , session["user_login"] , datetime.now() ,exp_date ))
             rtn = '''<h1> UPLOAD SUCCES</h1><br>
-                    <p><h2>link download : <a href="/{0}/{2}">{3}{0}{2} </a></h2></p><br>
-                    <p><h2>link delete   : <a href="/{1}/{2}">{3}{1}{2}</a></h2></p><br>
+                    <p><h2>link download : <a href="{0}/{2}">{3}{0}/{2} </a></h2></p><br>
+                    <p><h2>link delete   : <a href="{1}/{2}">{3}{1}/{2}</a></h2></p><br>
                     '''.format('api/files/download','api/files/delete',uuid_name,request.host_url)
             return rtn
     except Exception as e:
