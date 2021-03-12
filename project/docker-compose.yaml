@@ -1,22 +1,15 @@
 version: '2.1'
 services:
   app:
-    image: send
-    environment: 
-      ALLOWED_HOSTS: send,localhost
-      DATABASE_URL: sqlite:////database/db.sqlite3
+    build: .
+    image: app
     ports:
       - '8080:5000'
     volumes:
-      - database:/database/
-  app:
-    image: send
-    environment: 
-      ALLOWED_HOSTS: send,localhost
-      DATABASE_URL: sqlite:////database/db.sqlite3
-    # ports:
-    #   - '4005:4005'
+      - .:/app
+  time_delete:
+    build:
+      context: "../service_time_delete"
+    image: time_delete
     volumes:
-      - database:/database/
-volumes:
-  database: {}
+      - .:/app
