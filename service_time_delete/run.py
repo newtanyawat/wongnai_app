@@ -37,6 +37,7 @@ def start():
                 os.remove(delete_file)
         return "service delete time is working"
     except Exception as e :
+        print("service delete time Error : " , str(e))
         return "service delete time Error : " + str(e) 
 
 
