@@ -12,6 +12,7 @@ configdb = {"db_name" : "../app/store-file.db" }
 @app.route('/')
 def start():
     try :
+        dateNOW = datetime.now() + timedelta(hours=7) #! +7 hours [RUN docker]
         print(configdb["db_name"])
         connection = sqlite3.connect(configdb["db_name"])
         cursor = connection.cursor()
