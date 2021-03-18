@@ -7,7 +7,7 @@ import sys ,os , sqlite3
 
 sys.path.append(".")
 
-configdb = {"db_name" : "../project/store-file.db" }
+configdb = {"db_name" : "../app/store-file.db" }
 
 @app.route('/')
 def start():
