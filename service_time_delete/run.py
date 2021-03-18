@@ -3,16 +3,18 @@ from apps.server import app
 from apps.dbconfig import *
 import threading
 from datetime import datetime , timedelta
-import sys ,os
+import sys ,os , sqlite3
 
 sys.path.append(".")
 
-
+configdb = {"db_name" : "../project/store-file.db" }
 
 @app.route('/')
-@connect_sqlite()
-def start(cursor):
+def start():
     try :
+        connection = sqlite3.connect(configdb["db_name"])
+        cursor = connection.cursor()
+        cursor.row_factory = sqlite3.Row
         rtn = 'SELECT uuid_name , exp_at from files'
         db_files = cursor.execute(rtn)
         data = cursor.fetchall()
