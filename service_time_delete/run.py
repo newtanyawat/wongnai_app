@@ -36,8 +36,15 @@ def start():
                 path_file = "../app/upload/" #!container path
                 delete_file = path_file + file_name
                 # print(delete_file)
-                os.remove(delete_file)
-        return "service delete time is working at : {0}  ".format(dateNOW)
+                if os.path.exists(delete_file):
+                    os.remove(delete_file)
+                    return "service delete is working at : {0}  ".format(dateNOW)
+                else:
+                    print("file does not exist")
+                    return "service delete is not working , file does not exist , work time at : {0}  ".format(dateNOW)
+
+                # os.remove(delete_file)
+        
     except Exception as e :
         print("service delete time Error : " , str(e))
         return "service delete time Error : " + str(e) 
