@@ -32,7 +32,8 @@ def start():
 
                 #! delete from local 
                 file_name = data_01[0]
-                path_file = "../project/upload/"
+                # path_file = "../project/upload/" #!local path
+                path_file = "../project/upload/" #!container path
                 delete_file = path_file + file_name
                 # print(delete_file)
                 os.remove(delete_file)
