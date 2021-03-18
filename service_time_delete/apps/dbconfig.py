@@ -26,18 +26,18 @@ def connect_sqlite():
         return wrapper
     return wrap
 
-def create_table_accounts():
-    try:
-        # Setup connection
-        connection = sqlite3.connect(configdb["db_name"])
-        cursor = connection.cursor()
-        cursor.execute('''CREATE TABLE IF NOT EXISTS accounts
-        (uuid text,
-        username TEXT NOT NULL UNIQUE,
-        password text)''')
-        connection.commit()
-        connection.close()
-    except Exception as e : 
-        return "create_table_accounts ERROR : "+str(e)
+# def create_table_accounts():
+#     try:
+#         # Setup connection
+#         connection = sqlite3.connect(configdb["db_name"])
+#         cursor = connection.cursor()
+#         cursor.execute('''CREATE TABLE IF NOT EXISTS accounts
+#         (uuid text,
+#         username TEXT NOT NULL UNIQUE,
+#         password text)''')
+#         connection.commit()
+#         connection.close()
+#     except Exception as e : 
+#         return "create_table_accounts ERROR : "+str(e)
 
-create_table_accounts()
+# create_table_accounts()
