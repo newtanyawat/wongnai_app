@@ -65,13 +65,13 @@ def time_delete_files(cursor):
         return "service delete time Error : " + str(e) 
 
 
-interval = 60 # 60 sec
+# interval = 60 # 60 sec
 
-def startTimer():
-    threading.Timer(interval, startTimer).start()
-    time_delete_files()
+# def startTimer():
+#     threading.Timer(interval, startTimer).start()
+#     time_delete_files()
 
-startTimer()
+# startTimer()
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', threaded=True, port=4005)
