@@ -12,6 +12,7 @@ configdb = {"db_name" : "../app/store-file.db" }
 @app.route('/')
 def start():
     try :
+        print(configdb["db_name"])
         connection = sqlite3.connect(configdb["db_name"])
         cursor = connection.cursor()
         cursor.row_factory = sqlite3.Row
