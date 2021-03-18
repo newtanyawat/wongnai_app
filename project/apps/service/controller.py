@@ -34,7 +34,7 @@ def service_upload(cursor):
         expDate = request.form['expDate']
         uuid = request.form['uuid'] 
         exp_date = dateNOW + timedelta(minutes=int(expDate)) #วันหมดอายุไฟล์ 
-        create_at = datetime.now()  #วันสร้างไฟล์ 
+        create_at = datetime.now()  #วันสร้างไฟล์ ไม่  +7
 
         if request.content_length > config["max_content"] :
             return render_template_string('<h1> Upload fail : more than limit file !!!!</h1><br><button onclick="window.history.back()">Go Back</button>')
@@ -48,7 +48,7 @@ def service_upload(cursor):
             into_files =   """
             INSERT INTO files (uuid ,name, uuid_name,password,download_times,create_by,create_at,exp_at)
             VALUES (?,?,?,?,?,?,?,?)"""
-            db_files = cursor.execute(into_files ,(uuid_file , file_name , uuid_name , password ,int(download) , session["user_login"] , create_at ,exp_date ))
+            db_files = cursor.execute(into_files ,(uuid_file , file_name , uuid_name , password ,int(download) , session["user_login"] , dateNOW ,exp_date ))
             rtn = '''<h1> UPLOAD SUCCES</h1><br>
                     <p><h2>link download : <a href="{3}{0}/{2}">{3}{0}/{2} </a></h2></p><br>
                     <p><h2>link delete   : <a href="{3}{1}/{2}">{3}{1}/{2}</a></h2></p><br>
