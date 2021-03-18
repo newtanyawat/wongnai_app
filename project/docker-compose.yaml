@@ -14,4 +14,4 @@ services:
     ports:
       - '8288:4005'
     volumes:
-      - .:/time_delete
+      - .:/app
