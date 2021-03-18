@@ -11,5 +11,7 @@ services:
     build:
       context: "../service_time_delete"
     image: time_delete
+        ports:
+      - '8288:4005'
     volumes:
       - .:/app
